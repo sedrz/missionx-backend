@@ -9,6 +9,7 @@ const {
 
 // The login controller which is called when we localhost:4000/api/user/login
 const login = async (req, res) => {
+  // password in the API call
   const { email, password } = req.body;
 
   // Gets the password for a particular email id.
@@ -19,9 +20,8 @@ const login = async (req, res) => {
   if (jsonResult.length === 0) {
     res.status(401).send("Could not find a user with the provided email id");
   } else {
-    const [{ password: passwordHash }] = jsonResult;
-    // const isValidPassword = checkPassword(password, passwordHash);
-    const isValidPassword = true;
+    const isValidPassword = password == jsonResult[0].Password;
+
     if (isValidPassword) {
       res.status(200).send("Successfully logged in user!");
     } else {

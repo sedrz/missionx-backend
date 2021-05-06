@@ -44,7 +44,7 @@ const getPassword = (email) => {
     const [
       rows,
     ] = await connection.execute(
-      'SELECT `users`.`password` FROM `MissionX-ssp`.`users` WHERE `users`.`email` = ?;',
+      'SELECT `user_mx_ssp`.`Password` FROM `MissionX-ssp`.`user_mx_ssp` WHERE `user_mx_ssp`.`email` = ?;',
       [email],
     );
     return rows;
